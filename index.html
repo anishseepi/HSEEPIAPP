@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSEEPI - Gestion de la Sécurité</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Connexion -->
+    <div id="loginPage" class="page active">
+        <h2>Connexion</h2>
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Mot de passe">
+        <button onclick="controller.login()">Se Connecter</button>
+        <p>Pas de compte? <a href="#" onclick="controller.showPage('register')">Créer un compte</a></p>
+    </div>
+
+    <!-- Inscription -->
+    <div id="registerPage" class="page">
+        <h2>Inscription</h2>
+        <input type="text" id="registerNom" placeholder="Nom">
+        <input type="text" id="registerPrenom" placeholder="Prénom">
+        <input type="email" id="registerEmail" placeholder="Email">
+        <input type="password" id="registerPassword" placeholder="Mot de passe">
+        <button onclick="controller.register()">S'inscrire</button>
+        <p>Déjà un compte? <a href="#" onclick="controller.showPage('login')">Connectez-vous ici</a></p>
+    </div>
+
+    <!-- Tableau de Bord -->
+    <div id="dashboardPage" class="page">
+        <h2>Bienvenue, <span id="userName"></span>!</h2>
+        <button onclick="controller.showPage('extincteurs')">Gestion des Extincteurs</button>
+        <button onclick="controller.showPage('accidents')">Rapports d'Accidents</button>
+        <button onclick="controller.showPage('equipements')">Gestion des Équipements</button>
+        <button onclick="controller.logout()">Déconnexion</button>
+    </div>
+
+    <!-- Gestion des Extincteurs -->
+    <div id="extincteursPage" class="page">
+        <h2>Gestion des Extincteurs</h2>
+        <table id="extinguishersTable">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Date de remplissage</th>
+                    <th>Date d'expiration</th>
+                    <th>Lieu</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="extinguishersBody"></tbody>
+        </table>
+        <button onclick="controller.addExtinguisher()">Ajouter Extincteur</button>
+        <button onclick="controller.showPage('dashboard')">Retour</button>
+    </div>
+
+    <!-- Rapports d'Accidents -->
+    <div id="accidentsPage" class="page">
+        <h2>Rapports d'Accidents</h2>
+        <table id="accidentsTable">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Date</th>
+                    <th>Lieu</th>
+                    <th>Cause</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button onclick="controller.addAccident()">Ajouter Rapport</button>
+        <button onclick="controller.showPage('dashboard')">Retour</button>
+    </div>
+
+    <!-- Gestion des Équipements -->
+    <div id="equipementsPage" class="page">
+        <h2>Gestion des Équipements</h2>
+        <table id="equipmentsTable">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Fonction</th>
+                    <th>Équipement</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button onclick="controller.addEquipment()">Ajouter Équipement</button>
+        <button onclick="controller.showPage('dashboard')">Retour</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
